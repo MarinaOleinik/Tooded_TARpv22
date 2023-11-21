@@ -13,7 +13,9 @@ namespace Tooded_TARpv22
 {
     public partial class Form1 : Form
     {
-        SqlConnection connect=new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\AppData\Tooded_DB.mdf;Integrated Security=True");
+
+        SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\AppData\Tooded_DB.mdf;Integrated Security=True");
+        //SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\marina.oleinik\source\repos\Tooded_TARpv22\AppData\Tooded_DB.mdf;Integrated Security=True");
 
         SqlDataAdapter adapter_toode, adapter_kategooria;
         SqlCommand command;
