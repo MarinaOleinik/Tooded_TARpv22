@@ -273,7 +273,7 @@ namespace Tooded_TARpv22
             page.Paragraphs.Add(new Aspose.Pdf.Text.TextFragment("Toode  Hind  Kogus Summa"));
             foreach (var toode in Tooded_list)
             {
-                page.Paragraphs.Add(new Aspose.Pdf.Text.TextFragment(toode));
+                page.Paragraphs.Add(new Aspose.Pdf.Text.TextFragment(toode));//
             }
             document.Save(@"..\..\Arved\Arve_.pdf");
             document.Dispose();
