@@ -38,19 +38,29 @@
             this.Toode_txt = new System.Windows.Forms.TextBox();
             this.Kogus_txt = new System.Windows.Forms.TextBox();
             this.Hind_txt = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.Lisa_btn = new System.Windows.Forms.Button();
+            this.Uuenda_btn = new System.Windows.Forms.Button();
+            this.Kust_btn = new System.Windows.Forms.Button();
+            this.kustuta_btn = new System.Windows.Forms.Button();
+            this.Toode_pb = new System.Windows.Forms.PictureBox();
+            this.otsi_fail_btn = new System.Windows.Forms.Button();
+            this.eemalda_btn = new System.Windows.Forms.Button();
+            this.Maksta_btn = new System.Windows.Forms.Button();
+            this.Makseweb = new System.Windows.Forms.WebBrowser();
+            this.Valik_btn = new System.Windows.Forms.Button();
+            this.Ostan_btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Toode_pb)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(102, 301);
+            this.dataGridView1.Location = new System.Drawing.Point(102, 314);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(686, 137);
+            this.dataGridView1.Size = new System.Drawing.Size(764, 241);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_RowHeaderMouseClick);
             // 
             // Kat_Box
             // 
@@ -74,9 +84,9 @@
             // Lisa_Kat_btn
             // 
             this.Lisa_Kat_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.Lisa_Kat_btn.Location = new System.Drawing.Point(336, 202);
+            this.Lisa_Kat_btn.Location = new System.Drawing.Point(102, 246);
             this.Lisa_Kat_btn.Name = "Lisa_Kat_btn";
-            this.Lisa_Kat_btn.Size = new System.Drawing.Size(119, 33);
+            this.Lisa_Kat_btn.Size = new System.Drawing.Size(138, 33);
             this.Lisa_Kat_btn.TabIndex = 3;
             this.Lisa_Kat_btn.Text = "Lisa kategooriat";
             this.Lisa_Kat_btn.UseVisualStyleBackColor = true;
@@ -136,44 +146,137 @@
             this.Hind_txt.Size = new System.Drawing.Size(180, 32);
             this.Hind_txt.TabIndex = 9;
             // 
-            // button1
+            // Lisa_btn
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.button1.Location = new System.Drawing.Point(145, 254);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Lisa";
-            this.button1.UseVisualStyleBackColor = true;
+            this.Lisa_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.Lisa_btn.Location = new System.Drawing.Point(102, 285);
+            this.Lisa_btn.Name = "Lisa_btn";
+            this.Lisa_btn.Size = new System.Drawing.Size(75, 23);
+            this.Lisa_btn.TabIndex = 10;
+            this.Lisa_btn.Text = "Lisa";
+            this.Lisa_btn.UseVisualStyleBackColor = true;
+            this.Lisa_btn.Click += new System.EventHandler(this.Lisa_btn_Click);
             // 
-            // button2
+            // Uuenda_btn
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.button2.Location = new System.Drawing.Point(226, 254);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "Uuenda";
-            this.button2.UseVisualStyleBackColor = true;
+            this.Uuenda_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.Uuenda_btn.Location = new System.Drawing.Point(183, 285);
+            this.Uuenda_btn.Name = "Uuenda_btn";
+            this.Uuenda_btn.Size = new System.Drawing.Size(75, 23);
+            this.Uuenda_btn.TabIndex = 11;
+            this.Uuenda_btn.Text = "Uuenda";
+            this.Uuenda_btn.UseVisualStyleBackColor = true;
+            this.Uuenda_btn.Click += new System.EventHandler(this.Uuenda_btn_Click);
             // 
-            // button3
+            // Kust_btn
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.button3.Location = new System.Drawing.Point(307, 254);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 12;
-            this.button3.Text = "Kustuta";
-            this.button3.UseVisualStyleBackColor = true;
+            this.Kust_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.Kust_btn.Location = new System.Drawing.Point(264, 285);
+            this.Kust_btn.Name = "Kust_btn";
+            this.Kust_btn.Size = new System.Drawing.Size(75, 23);
+            this.Kust_btn.TabIndex = 12;
+            this.Kust_btn.Text = "Kustuta";
+            this.Kust_btn.UseVisualStyleBackColor = true;
+            this.Kust_btn.Click += new System.EventHandler(this.Kust_btn_Click);
+            // 
+            // kustuta_btn
+            // 
+            this.kustuta_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.kustuta_btn.Location = new System.Drawing.Point(246, 246);
+            this.kustuta_btn.Name = "kustuta_btn";
+            this.kustuta_btn.Size = new System.Drawing.Size(142, 33);
+            this.kustuta_btn.TabIndex = 13;
+            this.kustuta_btn.Text = "Kustuta kategooriat";
+            this.kustuta_btn.UseVisualStyleBackColor = true;
+            this.kustuta_btn.Click += new System.EventHandler(this.kustuta_btn_Click);
+            // 
+            // Toode_pb
+            // 
+            this.Toode_pb.Location = new System.Drawing.Point(446, 23);
+            this.Toode_pb.Name = "Toode_pb";
+            this.Toode_pb.Size = new System.Drawing.Size(382, 223);
+            this.Toode_pb.TabIndex = 14;
+            this.Toode_pb.TabStop = false;
+            // 
+            // otsi_fail_btn
+            // 
+            this.otsi_fail_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.otsi_fail_btn.Location = new System.Drawing.Point(446, 255);
+            this.otsi_fail_btn.Name = "otsi_fail_btn";
+            this.otsi_fail_btn.Size = new System.Drawing.Size(90, 24);
+            this.otsi_fail_btn.TabIndex = 15;
+            this.otsi_fail_btn.Text = "Otsi fail";
+            this.otsi_fail_btn.UseVisualStyleBackColor = true;
+            this.otsi_fail_btn.Click += new System.EventHandler(this.otsi_fail_btn_Click);
+            // 
+            // eemalda_btn
+            // 
+            this.eemalda_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.eemalda_btn.Location = new System.Drawing.Point(345, 285);
+            this.eemalda_btn.Name = "eemalda_btn";
+            this.eemalda_btn.Size = new System.Drawing.Size(75, 23);
+            this.eemalda_btn.TabIndex = 16;
+            this.eemalda_btn.Text = "Eemalda";
+            this.eemalda_btn.UseVisualStyleBackColor = true;
+            this.eemalda_btn.Click += new System.EventHandler(this.eemalda_btn_Click);
+            // 
+            // Maksta_btn
+            // 
+            this.Maksta_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.Maksta_btn.Location = new System.Drawing.Point(446, 285);
+            this.Maksta_btn.Name = "Maksta_btn";
+            this.Maksta_btn.Size = new System.Drawing.Size(75, 23);
+            this.Maksta_btn.TabIndex = 17;
+            this.Maksta_btn.Text = "Maksta";
+            this.Maksta_btn.UseVisualStyleBackColor = true;
+            // 
+            // Makseweb
+            // 
+            this.Makseweb.Location = new System.Drawing.Point(872, 29);
+            this.Makseweb.MinimumSize = new System.Drawing.Size(20, 20);
+            this.Makseweb.Name = "Makseweb";
+            this.Makseweb.Size = new System.Drawing.Size(478, 521);
+            this.Makseweb.TabIndex = 18;
+            this.Makseweb.Url = new System.Uri("", System.UriKind.Relative);
+            // 
+            // Valik_btn
+            // 
+            this.Valik_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.Valik_btn.Location = new System.Drawing.Point(571, 256);
+            this.Valik_btn.Name = "Valik_btn";
+            this.Valik_btn.Size = new System.Drawing.Size(75, 23);
+            this.Valik_btn.TabIndex = 19;
+            this.Valik_btn.Text = "Valin";
+            this.Valik_btn.UseVisualStyleBackColor = true;
+            this.Valik_btn.Click += new System.EventHandler(this.Valik_btn_Click);
+            // 
+            // Ostan_btn
+            // 
+            this.Ostan_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.Ostan_btn.Location = new System.Drawing.Point(652, 256);
+            this.Ostan_btn.Name = "Ostan_btn";
+            this.Ostan_btn.Size = new System.Drawing.Size(75, 23);
+            this.Ostan_btn.TabIndex = 20;
+            this.Ostan_btn.Text = "Ostan";
+            this.Ostan_btn.UseVisualStyleBackColor = true;
+            this.Ostan_btn.Click += new System.EventHandler(this.Ostan_btn_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(1353, 556);
+            this.Controls.Add(this.Ostan_btn);
+            this.Controls.Add(this.Valik_btn);
+            this.Controls.Add(this.Makseweb);
+            this.Controls.Add(this.Maksta_btn);
+            this.Controls.Add(this.eemalda_btn);
+            this.Controls.Add(this.otsi_fail_btn);
+            this.Controls.Add(this.Toode_pb);
+            this.Controls.Add(this.kustuta_btn);
+            this.Controls.Add(this.Kust_btn);
+            this.Controls.Add(this.Uuenda_btn);
+            this.Controls.Add(this.Lisa_btn);
             this.Controls.Add(this.Hind_txt);
             this.Controls.Add(this.Kogus_txt);
             this.Controls.Add(this.Toode_txt);
@@ -185,8 +288,9 @@
             this.Controls.Add(this.Kat_Box);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Minu Epood";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Toode_pb)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -204,9 +308,17 @@
         private System.Windows.Forms.TextBox Toode_txt;
         private System.Windows.Forms.TextBox Kogus_txt;
         private System.Windows.Forms.TextBox Hind_txt;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button Lisa_btn;
+        private System.Windows.Forms.Button Uuenda_btn;
+        private System.Windows.Forms.Button Kust_btn;
+        private System.Windows.Forms.Button kustuta_btn;
+        private System.Windows.Forms.PictureBox Toode_pb;
+        private System.Windows.Forms.Button otsi_fail_btn;
+        private System.Windows.Forms.Button eemalda_btn;
+        private System.Windows.Forms.Button Maksta_btn;
+        private System.Windows.Forms.WebBrowser Makseweb;
+        private System.Windows.Forms.Button Valik_btn;
+        private System.Windows.Forms.Button Ostan_btn;
     }
 }
 
