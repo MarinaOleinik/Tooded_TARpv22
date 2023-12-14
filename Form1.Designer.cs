@@ -49,6 +49,7 @@
             this.Makseweb = new System.Windows.Forms.WebBrowser();
             this.Valik_btn = new System.Windows.Forms.Button();
             this.Ostan_btn = new System.Windows.Forms.Button();
+            this.SaadaArve_btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Toode_pb)).BeginInit();
             this.SuspendLayout();
@@ -261,11 +262,23 @@
             this.Ostan_btn.UseVisualStyleBackColor = true;
             this.Ostan_btn.Click += new System.EventHandler(this.Ostan_btn_Click);
             // 
+            // SaadaArve_btn
+            // 
+            this.SaadaArve_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.SaadaArve_btn.Location = new System.Drawing.Point(733, 255);
+            this.SaadaArve_btn.Name = "SaadaArve_btn";
+            this.SaadaArve_btn.Size = new System.Drawing.Size(95, 24);
+            this.SaadaArve_btn.TabIndex = 21;
+            this.SaadaArve_btn.Text = "Saada arve";
+            this.SaadaArve_btn.UseVisualStyleBackColor = true;
+            this.SaadaArve_btn.Click += new System.EventHandler(this.SaadaArve_btn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1353, 556);
+            this.Controls.Add(this.SaadaArve_btn);
             this.Controls.Add(this.Ostan_btn);
             this.Controls.Add(this.Valik_btn);
             this.Controls.Add(this.Makseweb);
@@ -319,6 +332,7 @@
         private System.Windows.Forms.WebBrowser Makseweb;
         private System.Windows.Forms.Button Valik_btn;
         private System.Windows.Forms.Button Ostan_btn;
+        private System.Windows.Forms.Button SaadaArve_btn;
     }
 }
 

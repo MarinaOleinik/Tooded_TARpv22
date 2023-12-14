@@ -7,12 +7,14 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Mail;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using Aspose.Pdf;
+using Microsoft.VisualBasic;
 using Image = System.Drawing.Image;
 
 namespace Tooded_TARpv22
@@ -266,7 +268,7 @@ namespace Tooded_TARpv22
         }
 
         Document document;
-        private void Ostan_btn_Click(object sender, EventArgs e)
+        private void Ostan_btn_Click(object sender, EventArgs e)//arve koostamine
         {
             document = new Document();//using Aspose.Pdf
             var page = document.Pages.Add();
@@ -278,11 +280,42 @@ namespace Tooded_TARpv22
             document.Save(@"..\..\Arved\Arve_.pdf");
             document.Dispose();
         }
-        List<string> Tooded_list = new List<string>();
+        List<string> Tooded_list = new List<string>();//tooded listisse
         private void Valik_btn_Click(object sender, EventArgs e)
         {
             Tooded_list.Add("-----------------------");
             Tooded_list.Add((Toode_txt.Text + "  " + Hind_txt.Text + "  " + Kogus_txt.Text + "  " + (Convert.ToInt32(Kogus_txt.Text.ToString()) * Convert.ToInt32(Hind_txt.Text.ToString()))).ToString());
+        }
+
+        private void SaadaArve_btn_Click(object sender, EventArgs e)
+        {
+            string adress = Interaction.InputBox("Sisesta e-mail", "Kuhu saada", "marina.oleinik@tthk.ee");
+            try
+            {
+                MailMessage mail = new MailMessage();
+                SmtpClient smtpClient = new SmtpClient("smtp.gmail.com")
+                {
+                    Port = 587,
+                    //string password = Interaction.InputBox("Sisesta salasõna");
+                    Credentials = new System.Net.NetworkCredential("mvc.programmeerimine@gmail.com", "3.Kuursus"),
+                    EnableSsl = true
+                };
+                mail.From = new MailAddress("mvc.programmeerimine@gmail.com");
+                mail.To.Add(adress);
+                mail.Subject = "Pilet";
+                mail.Body = "Pilet on ostetud ja ta on maanuses";//"Rida: ",rida.ToString()," Koht: ",koht.ToString();
+
+                foreach (var item in arr_pilet)
+                {
+                    mail.Attachments.Add(new Attachment(item));
+                }
+                smtpClient.Send(mail);
+                MessageBox.Show("Pilet oli saadetud mailile: " + adress);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Viga");
+            }
         }
 
         public void NaitaAndmed()
