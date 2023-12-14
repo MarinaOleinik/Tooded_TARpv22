@@ -297,20 +297,16 @@ namespace Tooded_TARpv22
                 {
                     Port = 587,
                     //string password = Interaction.InputBox("Sisesta salasõna");
-                    Credentials = new System.Net.NetworkCredential("mvc.programmeerimine@gmail.com", "3.Kuursus"),
+                    Credentials = new System.Net.NetworkCredential("mvc.programmeerimine@gmail.com", "3.Kuursus"), //kellelt email,password
                     EnableSsl = true
                 };
                 mail.From = new MailAddress("mvc.programmeerimine@gmail.com");
-                mail.To.Add(adress);
-                mail.Subject = "Pilet";
-                mail.Body = "Pilet on ostetud ja ta on maanuses";//"Rida: ",rida.ToString()," Koht: ",koht.ToString();
-
-                foreach (var item in arr_pilet)
-                {
-                    mail.Attachments.Add(new Attachment(item));
-                }
+                mail.To.Add(adress);//kellele
+                mail.Subject = "Arve";
+                mail.Body = "Arve on ostetud ja ta on maanuses";
+                mail.Attachments.Add(new Attachment(@"..\..\Arved\Arve_.pdf"));
                 smtpClient.Send(mail);
-                MessageBox.Show("Pilet oli saadetud mailile: " + adress);
+                MessageBox.Show("Arve oli saadetud mailile: " + adress);
             }
             catch (Exception)
             {
