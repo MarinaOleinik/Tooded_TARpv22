@@ -46,10 +46,10 @@
             this.otsi_fail_btn = new System.Windows.Forms.Button();
             this.eemalda_btn = new System.Windows.Forms.Button();
             this.Maksta_btn = new System.Windows.Forms.Button();
-            this.Makseweb = new System.Windows.Forms.WebBrowser();
             this.Valik_btn = new System.Windows.Forms.Button();
             this.Ostan_btn = new System.Windows.Forms.Button();
             this.SaadaArve_btn = new System.Windows.Forms.Button();
+            this.Pood_btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Toode_pb)).BeginInit();
             this.SuspendLayout();
@@ -231,15 +231,6 @@
             this.Maksta_btn.Text = "Maksta";
             this.Maksta_btn.UseVisualStyleBackColor = true;
             // 
-            // Makseweb
-            // 
-            this.Makseweb.Location = new System.Drawing.Point(872, 29);
-            this.Makseweb.MinimumSize = new System.Drawing.Size(20, 20);
-            this.Makseweb.Name = "Makseweb";
-            this.Makseweb.Size = new System.Drawing.Size(478, 521);
-            this.Makseweb.TabIndex = 18;
-            this.Makseweb.Url = new System.Uri("", System.UriKind.Relative);
-            // 
             // Valik_btn
             // 
             this.Valik_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
@@ -273,15 +264,26 @@
             this.SaadaArve_btn.UseVisualStyleBackColor = true;
             this.SaadaArve_btn.Click += new System.EventHandler(this.SaadaArve_btn_Click);
             // 
+            // Pood_btn
+            // 
+            this.Pood_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.Pood_btn.Location = new System.Drawing.Point(571, 285);
+            this.Pood_btn.Name = "Pood_btn";
+            this.Pood_btn.Size = new System.Drawing.Size(75, 23);
+            this.Pood_btn.TabIndex = 22;
+            this.Pood_btn.Text = "Pood";
+            this.Pood_btn.UseVisualStyleBackColor = true;
+            this.Pood_btn.Click += new System.EventHandler(this.Pood_btn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1353, 556);
+            this.ClientSize = new System.Drawing.Size(1384, 561);
+            this.Controls.Add(this.Pood_btn);
             this.Controls.Add(this.SaadaArve_btn);
             this.Controls.Add(this.Ostan_btn);
             this.Controls.Add(this.Valik_btn);
-            this.Controls.Add(this.Makseweb);
             this.Controls.Add(this.Maksta_btn);
             this.Controls.Add(this.eemalda_btn);
             this.Controls.Add(this.otsi_fail_btn);
@@ -302,6 +304,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "Form1";
             this.Text = "Minu Epood";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Toode_pb)).EndInit();
             this.ResumeLayout(false);
@@ -329,10 +332,10 @@
         private System.Windows.Forms.Button otsi_fail_btn;
         private System.Windows.Forms.Button eemalda_btn;
         private System.Windows.Forms.Button Maksta_btn;
-        private System.Windows.Forms.WebBrowser Makseweb;
         private System.Windows.Forms.Button Valik_btn;
         private System.Windows.Forms.Button Ostan_btn;
         private System.Windows.Forms.Button SaadaArve_btn;
+        private System.Windows.Forms.Button Pood_btn;
     }
 }
 
