@@ -17,8 +17,6 @@ namespace Tooded_TARpv22
 
         SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Tooded_DB.mdf;Integrated Security=True;");
         SqlCommand command;
-        
-        
         SqlDataAdapter adapter_toode, adapter_kategooria;
         
         public Form1()
@@ -87,30 +85,31 @@ namespace Tooded_TARpv22
 
         string extension=null;
         int Id = 0;
-        byte[] imageData;
+       
         private void Lisa_btn_Click(object sender, EventArgs e)
         {
-            if (Toode_txt.Text.Trim()!=string.Empty && Kogus_txt.Text.Trim()!=string.Empty && Hind_txt.Text.Trim()!=string.Empty && Kat_Box.SelectedItem!=null)
+            if (Toode_txt.Text.Trim()!=string.Empty &&
+                Kogus_txt.Text.Trim()!=string.Empty &&
+                Hind_txt.Text.Trim()!=string.Empty && Kat_Box.SelectedItem!=null)
             {
                 try
                 {
-                    connect.Open();
-                    
+                    connect.Open();               
                     command =new SqlCommand("SELECT Id FROM Kategooriatabel WHERE Kategooria_nimetus=@kat", connect);
                     command.Parameters.AddWithValue("@kat", Kat_Box.Text);
                     command.ExecuteNonQuery();
-                    Id = Convert.ToInt32(command.ExecuteScalar());
-                    
-                    command = new SqlCommand("INSERT INTO Toodetabel (Toodenimetus,Kogus,Hind,Pilt,Bpilt,Kategooriad) VALUES (@toode,@kogus,@hind,@pilt,@bpilt,@kat)",connect);                   
+                    Id = Convert.ToInt32(command.ExecuteScalar());                    
+                    command = new SqlCommand("INSERT INTO Toodetabel (Toodenimetus,Kogus,Hind,Pilt,Bpilt,Kategooriad)_" +
+                        " VALUES (@toode,@kogus,@hind,@pilt,@bpilt,@kat)",connect);                   
                     command.Parameters.AddWithValue("@toode",Toode_txt.Text);
                     command.Parameters.AddWithValue("@kogus",Kogus_txt.Text);
                     command.Parameters.AddWithValue("@hind",Hind_txt.Text);
+                    extension = Path.GetExtension(open.FileName);//.jpg-png
                     command.Parameters.AddWithValue("@pilt",Toode_txt.Text + extension);//jpg-png
                     imageData = File.ReadAllBytes(open.FileName);//
                     command.Parameters.AddWithValue("@bpilt", imageData);
                     command.Parameters.AddWithValue("@kat",Id);//Id?
-                    command.ExecuteNonQuery();
-                    
+                    command.ExecuteNonQuery();                    
                     connect.Close();
                     NaitaAndmed();
                 }
@@ -197,27 +196,22 @@ namespace Tooded_TARpv22
         }
 
         private void Uuenda_btn_Click(object sender, EventArgs e)
-        {
-            
-
+        {          
             if (Toode_txt.Text != "" && Kogus_txt.Text != "" && Hind_txt.Text != "" && Toode_pb.Image != null)
             {
-                command = new SqlCommand("UPDATE Toodetabel  SET Toodenimetus=@toode,Kogus=@kogus,Hind=@hind, Pilt=@pilt WHERE Id=@id", connect);
+                command = new SqlCommand("UPDATE Toodetabel  SET Toodenimetus=@toode,Kogus=@kogus,_" +
+                    "Hind=@hind, Pilt=@pilt WHERE Id=@id", connect);
                 connect.Open();
                 command.Parameters.AddWithValue("@id", Id);
                 command.Parameters.AddWithValue("@toode", Toode_txt.Text);
                 command.Parameters.AddWithValue("@kogus", Kogus_txt.Text);
-                command.Parameters.AddWithValue("@hind", Hind_txt.Text.Replace(",", "."));
-                
+                command.Parameters.AddWithValue("@hind", Hind_txt.Text.Replace(",", "."));               
                     string pilt = dataGridView1.SelectedRows[0].Cells["Pilt"].Value.ToString();
-                    string file_pilt = Toode_txt.Text + extension;//kontroll
-                
-                
+                    string file_pilt = Toode_txt.Text + extension;//kontroll                             
                 command.Parameters.AddWithValue("@pilt", file_pilt);
                 command.ExecuteNonQuery();
                 connect.Close();
                 NaitaAndmed();
-                
                 MessageBox.Show("Andmed uuendatud");
             }
             else
@@ -254,6 +248,7 @@ namespace Tooded_TARpv22
             Toode_txt.Text = "";
             Kogus_txt.Text = "";
             Hind_txt.Text = "";
+            Kat_Box.SelectedItem = null;
             using (FileStream fs = new FileStream(Path.Combine(Path.GetFullPath(@"..\..\Images"), "epood.png"), FileMode.Open, FileAccess.Read))
             {
                 Toode_pb.Image = Image.FromStream(fs);
@@ -307,10 +302,7 @@ namespace Tooded_TARpv22
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
+        
         int kat_Id;
         List<string> fail_list;
         SqlDataAdapter failinimi_adap;
@@ -330,24 +322,19 @@ namespace Tooded_TARpv22
         PictureBox pictureBox;
         private void Pood_btn_Click(object sender, EventArgs e)
         {
-            this.Size= new Size(1350, 600);
+            Size= new Size(1350, 600);
             kategooriad = new TabControl(); //loome kaardid
             kategooriad.Name = "Kategooriad";
-            //kategooriad.Dock = DockStyle.Left;
             kategooriad.Width = 450; //kaartide suurus võrdus vormi suurusega
-            kategooriad.Height = this.Height;
+            kategooriad.Height = Height;
             kategooriad.Location = new System.Drawing.Point(900, 0);
-            
-
             connect.Open();
             adapter_kategooria = new SqlDataAdapter("SELECT Id, Kategooria_nimetus FROM Kategooriatabel", connect);
-
             DataTable dt_kat = new DataTable();
             adapter_kategooria.Fill(dt_kat);
             ImageList iconsList = new ImageList();//
             iconsList.ColorDepth = ColorDepth.Depth32Bit;//
             iconsList.ImageSize = new Size(25, 25);//
-
             int i = 0;//
             foreach (DataRow nimetus in dt_kat.Rows)
             {
@@ -361,7 +348,6 @@ namespace Tooded_TARpv22
                 int c = 0;
                 foreach (var fail in fail_list)
                 {
-                    //MessageBox.Show(fail);
                     pictureBox = new PictureBox(); //loob pildi kast
                     pictureBox.Image = Image.FromFile(@"..\..\Images\" + fail);
                     pictureBox.Width = pictureBox.Height = 100; //kasti suurus
@@ -380,7 +366,9 @@ namespace Tooded_TARpv22
         {
             connect.Open();
             DataTable dt_toode = new DataTable();
-            adapter_toode = new SqlDataAdapter("SELECT Toodetabel.Id,Toodetabel.Toodenimetus,Toodetabel.Kogus,Toodetabel.Hind,Toodetabel.Pilt,Toodetabel.Bpilt, Kategooriatabel.Kategooria_nimetus as Kategooria_nimetus  FROM Toodetabel INNER JOIN Kategooriatabel on Toodetabel.Kategooriad=Kategooriatabel.Id ", connect);
+            adapter_toode = new SqlDataAdapter("SELECT Toodetabel.Id,Toodetabel.Toodenimetus,Toodetabel.Kogus," +
+                "Toodetabel.Hind,Toodetabel.Pilt,Toodetabel.Bpilt, Kategooriatabel.Kategooria_nimetus " +
+                "as Kategooria_nimetus  FROM Toodetabel INNER JOIN Kategooriatabel on Toodetabel.Kategooriad=Kategooriatabel.Id ", connect);
             adapter_toode.Fill(dt_toode);
             dataGridView1.Columns.Clear();
             dataGridView1.DataSource = dt_toode;
@@ -400,6 +388,7 @@ namespace Tooded_TARpv22
             Toode_pb.Image = Image.FromFile(Path.Combine(Path.GetFullPath(@"..\..\Images"), "epood.png"));
             connect.Close();
         }
+
         Form popupForm;
         private void Loopilt(Image image, int r)
         {
@@ -421,7 +410,8 @@ namespace Tooded_TARpv22
             popupForm.Location = new System.Drawing.Point(popupLocation.X + cellRectangle.Width, popupLocation.Y);
             popupForm.Show();
         }
-        
+
+        byte[] imageData;
         private void dataGridView1_CellMouseEnter_1(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex == 4)
@@ -438,7 +428,6 @@ namespace Tooded_TARpv22
             }
 
         }
-
         private void dataGridView1_CellMouseLeave_1(object sender, DataGridViewCellEventArgs e)
         {
             if (popupForm != null && !popupForm.IsDisposed)
